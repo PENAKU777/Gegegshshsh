@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Design</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+    <div class="profile">
+        <img src="profile.png" alt="Profile Picture" class="profile-img">
+        <div class="profile-info">
+            <span class="profile-name">Nickname</span>
+            <div class="profile-extra">Beginner</div> <!-- Новый блок с фоном -->
+        </div>
+    </div>
+
+    <header class="mobile-header"></header>
+    
+    <main class="mobile-main">
+        <div class="circle" id="circle"></div>
+        <div class="number" id="number">+1</div> <!-- Контейнер для числа -->
+    </main>
+    
+    <footer class="mobile-footer">
+        <nav class="footer-nav">
+            <ul class="nav-list">
+                <li><a href="#" class="nav-item">
+                    <img src="main.png" alt="Кнопка 1" class="nav-icon">
+                    MAIN
+                </a></li>
+                <!-- Миссии удалены -->
+                <li><a href="#" class="nav-item">
+                    <img src="referal.png" alt="Кнопка 3" class="nav-icon">
+                    REFERAL
+                </a></li>
+                <li><a href="#" class="nav-item">
+                    <img src="telegram.png" alt="Кнопка 4" class="nav-icon">
+                    CHANNEL
+                </a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        const circle = document.getElementById('circle');
+        const number = document.getElementById('number');
+
+        // Функция для запуска анимации
+        function animateNumber() {
+            // Сбросить старые анимации
+            number.classList.remove('animate');
+            
+            // Устанавливаем начальные значения
+            number.style.opacity = 1;
+            number.style.transform = 'translate(-50%, -50%)';
+            
+            // Запускаем анимацию числа
+            setTimeout(() => {
+                number.classList.add('animate');
+            }, 0); // Запускаем анимацию сразу после сброса
+
+            // Через 1.5 секунды скрыть число
+            setTimeout(() => {
+                number.style.opacity = 0;
+            }, 1500); // Через 1.5 секунды
+        }
+
+        // Обработчик клика по кругу
+        circle.addEventListener('click', () => {
+            animateNumber();
+        });
+    </script>
+</body>
+</html>

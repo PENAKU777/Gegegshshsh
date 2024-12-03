@@ -1,0 +1,229 @@
+/* Общие стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #000000; /* Тёмный фон */
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Блок с профилем */
+.profile {
+  position: absolute;
+  top: 2vh; /* Используем vh для пропорциональности */
+  left: 2vw; /* Используем vw для пропорциональности */
+  display: flex;
+  align-items: center;
+}
+
+.profile-img {
+  width: 10vw; /* 10% от ширины экрана */
+  height: 10vw;
+  border-radius: 50%; 
+  margin-right: 2vw;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-name {
+  font-size: 3vw; /* Используем vw для пропорционального размера шрифта */
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 1vw;
+}
+
+.profile-extra {
+  background-color: rgb(202, 159, 5);
+  padding: 1px 3vw;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 2.5vw; /* Используем vw для пропорциональности */
+}
+
+/* Основной блок с кругом */
+.mobile-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 20vh; /* Увеличиваем отступ сверху с помощью vh */
+  border-radius: 45px 45px 0 0;
+  background-color: #353535;
+  box-shadow: 0 -10px 30px rgba(255, 145, 0, 0.884);
+  border-top: 4px solid #ffff00;
+}
+
+/* Круг */
+.circle {
+  margin-top: 45vh; /* 45% от высоты экрана */
+  width: 50vw; /* 40% от ширины экрана */
+  height: 40vw; /* 40% от ширины экрана */
+  background: linear-gradient(to bottom, rgba(248, 203, 0, 0.367), rgb(53, 53, 53)); 
+  border: 3px solid rgba(241, 190, 8, 0.875);
+  border-radius: 50%; /* Полный круг */
+  cursor: pointer; 
+  transition: transform 0.3s ease; /* Легкая анимация при наведении */
+}
+
+/* Эффект при наведении */
+.circle:hover {
+  transform: scale(1.1); /* Легкое увеличение при наведении */
+}
+
+/* Анимация для числа */
+.number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5vw; /* Используем vw для пропорционального размера */
+  font-weight: bold;
+  color: rgba(255, 165, 0, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Анимация для числа */
+.number.animate {
+  animation: moveUp 1.5s forwards;
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -150%); /* Перемещение вверх */
+    opacity: 0;
+  }
+}
+
+
+/* Навигация */
+.mobile-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #474747;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 2.5vw; /* Используем vw для пропорциональности */
+  padding: 2vw 0;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-icon {
+  width: 8vw; 
+  height: 8vw;
+  margin-bottom: 1vw; 
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #ffa600bf;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+  width: 10%;
+}
+
+.nav-item.active::after {
+  width: 95%;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 600px) {
+  .profile-img {
+    width: 20vw; /* Уменьшаем изображение профиля на мобильных устройствах */
+    height: 20vw;
+  }
+  
+  .profile-name {
+    font-size: 4vw;
+  }
+
+  .profile-extra {
+    font-size: 3.5vw;
+  }
+
+  .circle {
+    width: 60vw;
+    height: 60vw;
+  }
+
+  .number {
+    font-size: 7vw;
+  }
+
+  .nav-item {
+    font-size: 4vw; /* Увеличиваем размер текста в навигации для мобильных устройств */
+  }
+}
+
+/* Для планшетов и средних устройств */
+@media (max-width: 1024px) {
+  .profile-img {
+    width: 15vw; /* Уменьшаем изображение профиля */
+    height: 15vw;
+  }
+
+  .circle {
+    width: 30vw;
+    height: 30vw;
+  }
+
+  .number {
+    font-size: 5vw;
+  }
+
+  .nav-item {
+    font-size: 3vw; /* Немного уменьшает текст */
+  }
+}
